@@ -7,6 +7,7 @@ require File.expand_path('../config/initializers/faye_token.rb', __FILE__)
 
 class ServerAuth
   def incoming(message, callback)
+    puts message
     if message['channel'] !~ %r{^/meta/}
       if message['ext']['auth_token'] != FAYE_TOKEN
         message['error'] = 'Invalid authentication token'
